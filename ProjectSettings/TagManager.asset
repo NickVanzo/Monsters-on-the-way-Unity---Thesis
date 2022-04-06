@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Coin
+  - PromethiumSmall
+  - PromethiumMedium
+  - PromethiumGem
+  - PromethiumDiamond
+  - Item
+  - Chest
+  - NPC
+  - Door
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Background
+  - Water
+  - UI
+  - Ground
+  - Player
+  - Ogre
+  - Skeleton
+  - Collectible
+  - Decoration
+  - Background image
+  - Door
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background image
+    uniqueID: 605077363
+    locked: 0
+  - name: Background
+    uniqueID: 4097940345
+    locked: 0
+  - name: Decorations
+    uniqueID: 191998223
+    locked: 0
+  - name: Foreground
+    uniqueID: 653843293
+    locked: 0
+  - name: Enemy
+    uniqueID: 2706203445
+    locked: 0
+  - name: Collectible
+    uniqueID: 1907498813
+    locked: 0
+  - name: Player
+    uniqueID: 3645379675
+    locked: 0
+  - name: Door
+    uniqueID: 869391081
+    locked: 0
