@@ -32,7 +32,6 @@ public class PlayerTriggersHandler : MonoBehaviour
                     HandleCoinCollected(collision);
                 }
                 break;
-            
         }
     }
 

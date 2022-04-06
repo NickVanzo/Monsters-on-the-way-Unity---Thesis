@@ -21,7 +21,7 @@ public class RewardHandler : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             int indexOfReward = Random.Range(0, rewards.Length);
-            Instantiate(rewards[indexOfReward]);
+            Instantiate(rewards[indexOfReward], new Vector2(transform.position.x, transform.position.y + 0.5f), transform.rotation);
             SpawnPopupText(rewards[indexOfReward].GetComponent<ItemDescriptor>().GetDescription());
             GetComponent<Collider2D>().enabled = false;
             if (tag == "Chest")
