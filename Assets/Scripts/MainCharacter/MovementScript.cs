@@ -31,7 +31,8 @@ public class MovementScript : MonoBehaviour
             Run();
             FlipSprite();
             CheckIfPlayerIsFalling();
-        }        
+        }
+        GetComponent<BoxCollider2D>().offset = new Vector2(-0.3f, -0.04267314f);
     }
 
     private void CheckIfPlayerIsFalling()
@@ -44,11 +45,6 @@ public class MovementScript : MonoBehaviour
         {
             animator.SetBool("fall", true);
         }
-    }
-
-    private void Update()
-    {
-        GetComponent<BoxCollider2D>().offset = new Vector2(-0.3f, -0.04267314f);
     }
 
     //If the player goes left the sprite flips left, otherwise it flips to the right
@@ -111,5 +107,11 @@ public class MovementScript : MonoBehaviour
     void TriggerKickup()
     {
         rb.velocity += new Vector2(-kickbackFromEnemyAttack, 3f);
+    }
+
+    public void MoveToNearestSecretDoor()
+    {
+        Vector2 positionToGoTo = new Vector2(transform.localPosition.x - 8, transform.localPosition.y + 13);
+        transform.localPosition = positionToGoTo;
     }
 }
