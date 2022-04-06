@@ -40,12 +40,14 @@ public class WhiteSkeletonMovement : MonoBehaviour
         if (goLeft)
         {
             enemyVelocity = new Vector2(movementSpeed, rb.velocity.y);
+            transform.localScale = new(Mathf.Sign(movementSpeed), 1f);
         } else
         {
+            transform.localScale = new(-Mathf.Sign(movementSpeed), 1f);
             enemyVelocity = new Vector2(-movementSpeed, rb.velocity.y);
         }
         rb.velocity = enemyVelocity;
-        transform.localScale = new(-Mathf.Sign(movementSpeed), 1f);
+        
     }
 
     bool EnemyIsTouchingAWall()

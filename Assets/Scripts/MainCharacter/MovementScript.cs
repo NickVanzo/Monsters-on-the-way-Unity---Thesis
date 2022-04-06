@@ -44,7 +44,6 @@ public class MovementScript : MonoBehaviour
         {
             animator.SetBool("fall", true);
         }
-        Debug.Log(myCollider.IsTouchingLayers(mask));
     }
 
     private void Update()
