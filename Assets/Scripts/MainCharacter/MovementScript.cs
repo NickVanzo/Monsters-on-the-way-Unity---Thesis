@@ -30,7 +30,21 @@ public class MovementScript : MonoBehaviour
         {
             Run();
             FlipSprite();
+            CheckIfPlayerIsFalling();
         }        
+    }
+
+    private void CheckIfPlayerIsFalling()
+    {
+        LayerMask mask = LayerMask.GetMask("Ground");
+        if(myCollider.IsTouchingLayers(mask))
+        {
+            animator.SetBool("fall", false);
+        } else
+        {
+            animator.SetBool("fall", true);
+        }
+        Debug.Log(myCollider.IsTouchingLayers(mask));
     }
 
     private void Update()
