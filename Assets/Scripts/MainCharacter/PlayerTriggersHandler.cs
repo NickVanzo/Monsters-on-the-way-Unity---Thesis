@@ -32,6 +32,12 @@ public class PlayerTriggersHandler : MonoBehaviour
                     HandleCoinCollected(collision);
                 }
                 break;
+            case "Water":
+                if(!playerStats.IsIdrophobiaActive())
+                {
+                    playerStats.Die();
+                }
+                break;
         }
     }
 
