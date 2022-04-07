@@ -2064,6 +2064,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2873510612014976476, guid: 28e12af21731e45d5bfc76d88989bf9d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenMarkeplace
+      objectReference: {fileID: 0}
     - target: {fileID: 7378553339537819366, guid: 28e12af21731e45d5bfc76d88989bf9d, type: 3}
       propertyPath: m_Pivot.x
       value: 0

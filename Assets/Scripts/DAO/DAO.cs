@@ -69,7 +69,7 @@ public class DAO : MonoBehaviour
         }
     }
 
-    private IEnumerator AddGold()
+    public IEnumerator AddGold()
     {
         WWWForm form = new WWWForm();
 
