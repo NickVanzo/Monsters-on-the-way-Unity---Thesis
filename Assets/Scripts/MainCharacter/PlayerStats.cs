@@ -13,6 +13,7 @@ public class PlayerStats : MonoBehaviour
         
     Animator animator;
     bool isAlive;
+    bool idrophobiaActive;
 
     int currentHealth;
     int currentGold;
@@ -37,6 +38,7 @@ public class PlayerStats : MonoBehaviour
         currentGold = 0;
         currentHealth = maxHealth;
         isAlive = true;
+        idrophobiaActive = false;
         animator = GetComponent<Animator>();
     }   
   
@@ -218,5 +220,15 @@ public class PlayerStats : MonoBehaviour
     public int GetVeryRareTickets()
     {
         return this.veryRareTickets;
+    }
+
+    public bool IsIdrophobiaActive()
+    {
+        return this.idrophobiaActive;
+    }
+
+    public void SetIdrophobia(bool isActive)
+    {
+        this.idrophobiaActive = isActive;
     }
 }

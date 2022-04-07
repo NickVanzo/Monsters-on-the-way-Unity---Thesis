@@ -16,6 +16,7 @@ public class LevelHandler : MonoBehaviour
 
     bool isPlayerAlive = true;
     PlayerStats playerStats;
+    DAO dao;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class LevelHandler : MonoBehaviour
 
     private void Start()
     {
+        dao = GameObject.Find("DAO").GetComponent<DAO>();
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
     }
 
@@ -72,5 +74,11 @@ public class LevelHandler : MonoBehaviour
         commonTicketsText.text = "Common tickets: " + playerStats.GetCommonTickets().ToString();
         rareTicketsText.text = "Rare tickets: " + playerStats.GetRareTickets().ToString();
         veryRareTickets.text = "Very rare tickets: " + playerStats.GetVeryRareTickets().ToString();
+        StartCoroutine(dao.AddGold());
+    }
+
+    public void OpenMarkeplace()
+    {
+        Application.OpenURL("https://dangermonsters.web.app/marketplaceNFT");
     }
 }
