@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    AudioSource audioSource;
+    [SerializeField] AudioClip coinCollected;
+    [SerializeField] AudioClip gemCollected;
+    [SerializeField] AudioClip deathSound;
+
     [SerializeField] int maxHealth = 1;
     [SerializeField] float playerSpeed = 1f;
     [SerializeField] int meleeDamage = 1;
@@ -40,8 +45,9 @@ public class PlayerStats : MonoBehaviour
         isAlive = true;
         idrophobiaActive = false;
         animator = GetComponent<Animator>();
-    }   
-  
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void RemoveHealth(int damage)
     {
         currentHealth -= damage;
@@ -62,6 +68,7 @@ public class PlayerStats : MonoBehaviour
 
     public void Die()
     {
+        audioSource.PlayOneShot(deathSound);
         animator.SetTrigger("hit");
         animator.SetBool("death", true);
         isAlive = false;
@@ -93,12 +100,14 @@ public class PlayerStats : MonoBehaviour
 
     public void AddGold(int goldCollected)
     {
+        audioSource.PlayOneShot(coinCollected);
         currentGold += goldCollected + goldCollected * (goldPathActive);
         totalGold += goldCollected;
     }
 
     public void AddPromethium(int promethiumToAdd)
     {
+        audioSource.PlayOneShot(gemCollected);
         currentTokens += promethiumToAdd;
         totalTokens += promethiumToAdd;
     }

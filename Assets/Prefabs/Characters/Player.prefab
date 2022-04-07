@@ -235,6 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b268d753be1c454daf334d43377625a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpAudioClip: {fileID: 8300000, guid: 596d140ef4587462e9a506b91283edef, type: 3}
+  runAudioClip: {fileID: 8300000, guid: a37e366bb7a28473594e65438aca76bf, type: 3}
   delayBetweenWalkSound: 0.237
   timeToWaitAfterBeingAttackedToMoveAgain: 1
   kickbackFromEnemyAttack: 9
@@ -250,6 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80bd824d21de4ae2b94d7e59e26f720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinCollected: {fileID: 8300000, guid: 13a5a39ff76da4904b9134a6399c924e, type: 3}
+  gemCollected: {fileID: 8300000, guid: df523fbd258f243adba8961dfbbbf347, type: 3}
   maxHealth: 1
   playerSpeed: 5
   meleeDamage: 10000
@@ -272,6 +276,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 768
+  attackAudioClip: {fileID: 8300000, guid: 20732b59355104ffb8ba23a61031e4ac, type: 3}
   attackRange: 0.5
 --- !u!114 &639247335
 MonoBehaviour:
@@ -315,13 +320,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a37e366bb7a28473594e65438aca76bf, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.696
-  m_Pitch: -1.37
+  m_Volume: 0.32
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 141
+  Priority: 117
   DopplerLevel: 1.1
   MinDistance: 1
   MaxDistance: 500

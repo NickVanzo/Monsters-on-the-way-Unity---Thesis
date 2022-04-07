@@ -5,6 +5,9 @@ using TMPro;
 
 public class RewardHandler : MonoBehaviour
 {
+    AudioSource audioSource;
+    [SerializeField] AudioClip audioClip;
+
     [SerializeField] GameObject[] rewards;
     [SerializeField] float secondsToWaitToDestroyPopupText = 5f;
     [SerializeField] TextMeshProUGUI popup;
@@ -13,6 +16,7 @@ public class RewardHandler : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
 
@@ -26,6 +30,7 @@ public class RewardHandler : MonoBehaviour
             GetComponent<Collider2D>().enabled = false;
             if (tag == "Chest")
             {
+                audioSource.PlayOneShot(audioClip);
                 animator.SetBool("openChest", true);
             }
         }        
