@@ -5576,11 +5576,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7527015425983440443, guid: 75949b5f3e86f45598535a2edd35e7a2, type: 3}
       propertyPath: m_Name
-      value: Collect reward text (1)
+      value: Quit text
       objectReference: {fileID: 0}
     - target: {fileID: 7636689986943500283, guid: 75949b5f3e86f45598535a2edd35e7a2, type: 3}
       propertyPath: m_text
-      value: to quit
+      value: Press F to quit
       objectReference: {fileID: 0}
     - target: {fileID: 7904315507001012110, guid: 75949b5f3e86f45598535a2edd35e7a2, type: 3}
       propertyPath: m_Pivot.x
