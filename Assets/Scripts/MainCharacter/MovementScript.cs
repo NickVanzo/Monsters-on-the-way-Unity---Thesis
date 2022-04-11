@@ -5,6 +5,14 @@ using UnityEngine.InputSystem;
 public class MovementScript : MonoBehaviour
 {
     Vector2 moveInput;
+    AudioSource audioSource;
+    bool canPlayAudio = true;
+
+    [SerializeField] AudioClip jumpAudioClip;
+    [SerializeField] AudioClip runAudioClip;
+
+    [Range(0.1f, 1f)]
+    public float delayBetweenWalkSound = 0.2f;
 
     Animator animator;
     Rigidbody2D rb;
@@ -17,6 +25,7 @@ public class MovementScript : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         myCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -31,14 +40,39 @@ public class MovementScript : MonoBehaviour
             Run();
             FlipSprite();
             CheckIfPlayerIsFalling();
+            HandleAudioWalk();
         }
-        GetComponent<BoxCollider2D>().offset = new Vector2(-0.3f, -0.04267314f);
+        GetComponent<BoxCollider2D>().offset = new Vector2(-0.1873209f, -0.06213093f);
+    }
+
+    private void HandleAudioWalk()
+    {
+        bool playerHasHorizontalSpeed = Mathf.Abs(rb.velocity.x) >= Mathf.Epsilon;
+        
+        if (canPlayAudio && playerHasHorizontalSpeed && PlayerIsTouchingGround())
+        {
+            canPlayAudio = false;
+            audioSource.Play();
+            StartCoroutine(HandleAudioDelay(delayBetweenWalkSound));
+        }
+    }
+
+    private bool PlayerIsTouchingGround()
+    {
+        LayerMask mask = LayerMask.GetMask("Ground");
+        return myCollider.IsTouchingLayers(mask);
+
+    }
+
+    private IEnumerator HandleAudioDelay(float timeToWait)
+    {
+        yield return new WaitForSeconds(timeToWait);
+        canPlayAudio = true;
     }
 
     private void CheckIfPlayerIsFalling()
     {
-        LayerMask mask = LayerMask.GetMask("Ground");
-        if(myCollider.IsTouchingLayers(mask))
+        if(PlayerIsTouchingGround())
         {
             animator.SetBool("fall", false);
         } else
@@ -56,6 +90,7 @@ public class MovementScript : MonoBehaviour
 
         if(playerHasHorizontalSpeed)
         {
+            
             transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f);
         }
     }
@@ -73,18 +108,26 @@ public class MovementScript : MonoBehaviour
 
     void OnMove(InputValue value)
     {
-        moveInput = value.Get<Vector2>();
+            moveInput = value.Get<Vector2>();
     }    
 
     void OnJump(InputValue value)
     {
-        LayerMask mask = LayerMask.GetMask("Ground");
-        if (value.isPressed && myCollider.IsTouchingLayers(mask) && playerStats.PlayerIsAlive())
+        if (value.isPressed && PlayerIsTouchingGround() && playerStats.PlayerIsAlive())
         {
+            audioSource.clip = jumpAudioClip;
+            audioSource.Play();
+            StartCoroutine(ResetAudioOfRunAnimation());
             animator.SetTrigger("jump");
             rb.velocity += new Vector2(0f, playerStats.GetJumpForce());
         }
-    }    
+    }
+
+    private IEnumerator ResetAudioOfRunAnimation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        audioSource.clip = runAudioClip;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

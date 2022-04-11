@@ -4,6 +4,9 @@ using TMPro;
 
 public class LevelHandler : MonoBehaviour
 {
+    AudioSource audioSource;
+    [SerializeField] AudioClip audioClipForQuitting;
+
     [SerializeField] GameObject endScreenUI;
     [SerializeField] GameObject quitScreenUI;
     [SerializeField] GameObject collectiblesUI;
@@ -25,6 +28,7 @@ public class LevelHandler : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         dao = GameObject.Find("DAO").GetComponent<DAO>();
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
     }
@@ -65,6 +69,7 @@ public class LevelHandler : MonoBehaviour
 
     public void QuitUsingDoor()
     {
+        audioSource.PlayOneShot(audioClipForQuitting);
         Time.timeScale = 0;
         quitScreenUI.SetActive(true);
         collectiblesUI.SetActive(false);

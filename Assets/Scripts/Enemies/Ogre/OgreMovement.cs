@@ -9,6 +9,7 @@ public class OgreMovement : MonoBehaviour
     [SerializeField] float timeToWaitToCheckDistances = 1f;
 
     float distanceFromPlayer = 1000;
+    bool canFollowPlayer = true;
 
     Animator animator;
     Rigidbody2D rb;
@@ -27,7 +28,7 @@ public class OgreMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(playerStats.PlayerIsAlive())
+        if(playerStats.PlayerIsAlive() && canFollowPlayer)
         {
             Move();
         }
@@ -69,5 +70,15 @@ public class OgreMovement : MonoBehaviour
     IEnumerator WaitToCheckDistance()
     {
         yield return new WaitForSeconds(timeToWaitToCheckDistances);
+    }
+
+    public void Disable()
+    {
+        canFollowPlayer = false;
+    }
+
+    public void Active()
+    {
+        canFollowPlayer = true;
     }
 }

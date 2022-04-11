@@ -11,12 +11,16 @@ public class PlayerAttack : MonoBehaviour
     public Transform attackPointPosition;
     public LayerMask enemyLayers;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip attackAudioClip;
+
     [SerializeField] float attackRange = 0.5f;
 
     PlayerStats playerStats;
     
     void Start()
-    {        
+    {
+        audioSource = GetComponent<AudioSource>();
         canAttack = true;
         playerStats = GetComponent<PlayerStats>();
         meleeDamage = playerStats.GetMeleeDamage();
@@ -27,6 +31,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if(canAttack && playerStats.PlayerIsAlive())
         {
+            audioSource.PlayOneShot(attackAudioClip);
             Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPointPosition.position, attackRange, enemyLayers);
             foreach(Collider2D enemy in enemies)
             {

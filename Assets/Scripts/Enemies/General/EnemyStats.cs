@@ -70,13 +70,16 @@ public class EnemyStats : MonoBehaviour, IEnemy
 
     void ApplyKickbackEffect()
     {
-        if(name.Equals("Ogre")) {
-            GetComponent<OgreMovement>().enabled = false;
+        if(name.Substring(0, 4).Equals("Ogre"))
+        {
+            Debug.Log("DONE");
+            GetComponent<OgreMovement>().Disable();
+            Vector3 dir = Quaternion.AngleAxis(45, Vector3.forward) * Vector3.right;
+            int kickback = playerStats.GetKickBack();
+            rb.AddForce(dir * kickback, ForceMode2D.Impulse);
+            StartCoroutine(ReactivateMovement("Ogre"));
         }
-
-        int kickback = playerStats.GetKickBack();
-        rb.velocity += new Vector2(kickback, kickback);
-        StartCoroutine(ReactivateMovement("Ogre"));
+        
     }
 
     IEnumerator ReactivateMovement(string name)
@@ -85,7 +88,7 @@ public class EnemyStats : MonoBehaviour, IEnemy
         switch(name)
         {
             case "Ogre":
-                GetComponent<OgreMovement>().enabled = true;
+                GetComponent<OgreMovement>().Active();
                 break;
             default:
                 break;
