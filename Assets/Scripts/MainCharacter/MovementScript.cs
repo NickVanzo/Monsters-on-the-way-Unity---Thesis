@@ -42,7 +42,7 @@ public class MovementScript : MonoBehaviour
             CheckIfPlayerIsFalling();
             HandleAudioWalk();
         }
-        GetComponent<BoxCollider2D>().offset = new Vector2(-0.3f, -0.04267314f);
+        GetComponent<BoxCollider2D>().offset = new Vector2(-0.1873209f, -0.06213093f);
     }
 
     private void HandleAudioWalk()
