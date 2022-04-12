@@ -33,7 +33,7 @@ public class PlayerTriggersHandler : MonoBehaviour
                 }
                 break;
             case "Water":
-                if(!playerStats.IsIdrophobiaActive())
+                if(!playerStats.IsImmersionActive())
                 {
                     playerStats.Die();
                 }

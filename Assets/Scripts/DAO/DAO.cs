@@ -124,19 +124,25 @@ public class DAO : MonoBehaviour
             switch (nameOfCard)
             {
                 case "Wrath":
+                    playerStats.ActivateWrath();
                     playerStats.AddDamageStat(4);
                     break;
                 case "Sharpening":
+                    playerStats.SetSharpening();
                     playerStats.AddDamageStat(1);
                     break;
                 case "Midnight Hunt":
                     if (IsMidnight())
                     {
+                        playerStats.ActivateMidnightHunt();
                         playerStats.AddDamageStat(4);
                     }
                     break;
                 case "Path of gold":
                     playerStats.ActivatePathOfGold();
+                    break;
+                case "Immersion":
+                    playerStats.ActivateImmersion();
                     break;
             }
         }
