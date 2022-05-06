@@ -47,8 +47,10 @@ public class ConnectMetamask : MonoBehaviour
         {
             Web3Connect();
             OnConnected();
-        } 
+        }
+
         StartCoroutine(SetTextOfStats());
+
         await SetPromethiumText();
         await FetchNumberOfNFTsOwned();
     }

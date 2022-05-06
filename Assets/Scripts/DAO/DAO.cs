@@ -118,6 +118,8 @@ public class DAO : MonoBehaviour
         await card.FetchDurationOfCard();
         if (card.GetDuration() > 0 && card.GetIsActive())
         {
+            Debug.Log("Duration of card: " + card.GetDuration());
+            Debug.Log("Is this card active? " + card.GetIsActive());
             StartCoroutine(card.RemoveUsageFromCard());
             string uriOfNFT = card.GetUri();
             string nameOfCard = deckOfCardsByURIOfNFT.GetValueOrDefault(uriOfNFT);

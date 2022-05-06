@@ -48,6 +48,7 @@ public class Card
        
         this.duration = Int32.Parse(JObject.Parse(stringData)["duration"].ToString());
         this.isActive = Convert.ToBoolean(JObject.Parse(stringData)["isActive"].ToString());
+        
         return Int32.Parse(JObject.Parse(stringData)["duration"].ToString());
     }
 
