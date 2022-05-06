@@ -18,7 +18,6 @@ public class PlayerStats : MonoBehaviour
         
     Animator animator;
     bool isAlive;
-    bool idrophobiaActive;
 
     int currentHealth;
     int currentGold;
@@ -29,10 +28,18 @@ public class PlayerStats : MonoBehaviour
     int rareTickets;
     int veryRareTickets;
     int goldPathActive;
+    bool isSharpeningActive;
+    bool isWrathActive;
+    bool isMidnightActive;
+    bool isImmersionActive;
 
     // Start is called before the first frame update
     void Start()
     {
+        isImmersionActive = false;
+        isMidnightActive = false;
+        isWrathActive = false;
+        isSharpeningActive = false;
         commonTickets= 0;
         rareTickets = 0;
         veryRareTickets = 0;
@@ -43,7 +50,6 @@ public class PlayerStats : MonoBehaviour
         currentGold = 0;
         currentHealth = maxHealth;
         isAlive = true;
-        idrophobiaActive = false;
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
     }
@@ -201,6 +207,11 @@ public class PlayerStats : MonoBehaviour
         goldPathActive = 1;
     }
 
+    public bool IsGoldPathActive()
+    {
+        return goldPathActive == 1;
+    }
+
     public void ResetGold()
     {
         this.currentGold = 0;
@@ -231,13 +242,44 @@ public class PlayerStats : MonoBehaviour
         return this.veryRareTickets;
     }
 
-    public bool IsIdrophobiaActive()
+
+    public void SetSharpening()
     {
-        return this.idrophobiaActive;
+        this.isSharpeningActive = true;
     }
 
-    public void SetIdrophobia(bool isActive)
+    public bool IsSharpeningActive()
     {
-        this.idrophobiaActive = isActive;
+        return this.isSharpeningActive;
+    }
+
+    public void ActivateWrath()
+    {
+        this.isWrathActive = true;
+    }
+
+    public bool IsWrathActive()
+    {
+        return isWrathActive;
+    }
+
+    public void ActivateMidnightHunt()
+    {
+        this.isMidnightActive = true;
+    }
+
+    public bool IsMidnightHuntActive()
+    {
+        return this.isMidnightActive;
+    }
+
+    public bool IsImmersionActive()
+    {
+        return this.isImmersionActive;
+    }
+
+    public void ActivateImmersion()
+    {
+        this.isImmersionActive = true;
     }
 }

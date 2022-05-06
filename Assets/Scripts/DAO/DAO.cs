@@ -118,25 +118,33 @@ public class DAO : MonoBehaviour
         await card.FetchDurationOfCard();
         if (card.GetDuration() > 0 && card.GetIsActive())
         {
+            Debug.Log("Duration of card: " + card.GetDuration());
+            Debug.Log("Is this card active? " + card.GetIsActive());
             StartCoroutine(card.RemoveUsageFromCard());
             string uriOfNFT = card.GetUri();
             string nameOfCard = deckOfCardsByURIOfNFT.GetValueOrDefault(uriOfNFT);
             switch (nameOfCard)
             {
                 case "Wrath":
+                    playerStats.ActivateWrath();
                     playerStats.AddDamageStat(4);
                     break;
                 case "Sharpening":
+                    playerStats.SetSharpening();
                     playerStats.AddDamageStat(1);
                     break;
                 case "Midnight Hunt":
                     if (IsMidnight())
                     {
+                        playerStats.ActivateMidnightHunt();
                         playerStats.AddDamageStat(4);
                     }
                     break;
                 case "Path of gold":
                     playerStats.ActivatePathOfGold();
+                    break;
+                case "Immersion":
+                    playerStats.ActivateImmersion();
                     break;
             }
         }
